@@ -40,4 +40,27 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCD_I49IVKsKZiMLcjqtymH-9d8E81lszU",
+      authDomain: "authentication-app-2daff.firebaseapp.com",
+      databaseURL: "https://authentication-app-2daff.firebaseio.com",
+      projectId: "authentication-app-2daff",
+      storageBucket: "authentication-app-2daff.appspot.com",
+      messagingSenderId: "118538619733",
+      appId: "1:118538619733:web:d11a6c5ee96665b10a3ddc",
+      measurementId: "G-7M3WS7H2PE"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </html>
