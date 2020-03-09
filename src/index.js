@@ -5,8 +5,11 @@ import App from "./components/App";
 import Firebase, { FirebaseContext } from "./components/Firebase";
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new Firebase()}>
-    <App />
-  </FirebaseContext.Provider>,
+  <>
+    <h1>hello world</h1>
+    <FirebaseContext.Provider value={new Firebase()}>
+      <App />
+    </FirebaseContext.Provider>
+  </>,
   document.getElementById("root")
 );
