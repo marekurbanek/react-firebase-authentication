@@ -22,18 +22,23 @@ const SignUpPage = () => (
 class SignUpFormBase extends Component {
   state = { ...INITIAL_STATE };
 
-  onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
-    this.props.firebase
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
-        this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
-      })
-      .catch(error => {
-        this.setState({ error });
-      });
+  onSubmit = async event => {
     event.preventDefault();
+    try {
+      const { username, email, passwordOne } = this.state;
+      const authUser = await this.props.firebase.doCreateUserWithEmailAndPassword(
+        email,
+        passwordOne
+      );
+      await this.props.firebase.user(authUser.user.uid).set({
+        username,
+        email
+      });
+      this.setState({ ...INITIAL_STATE });
+      this.props.history.push(ROUTES.HOME);
+    } catch (error) {
+      this.setState({ error });
+    }
   };
 
   onChange = event => {
