@@ -12,5 +12,5 @@ steps:
     args: ["run", "build"]
 
   # Build
-  - name: "gcr.io/$PROJECT_ID/firebase"
+  - name: "gcr.io/authentication-app-2daff/firebase"
     args: ["deploy"]
