@@ -13,6 +13,9 @@ steps:
   # Instal
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
+  # Instal firebase globaly
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install", "-g", "firebase-tools"]
 
   # # Run
   # - name: 'gcr.io/cloud-builders/npm'
