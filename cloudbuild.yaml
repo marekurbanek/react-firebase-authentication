@@ -9,26 +9,29 @@ steps:
     - --location=global
     - --keyring=react-firebase-authentication 
     - --key=cloudbuild-env
+
 steps:
   # Instal
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["install"]
-  # Instal firebase globaly
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["install", "-g", "firebase-tools"]
+  - name: node:10.15.1
+    entrypoint: npm
+    args: ['install']
 
-  # # Run
-  # - name: 'gcr.io/cloud-builders/npm'
-  #   args: ['run']
-
+steps:
   # Build
-  - name: "gcr.io/cloud-builders/npm"
+  - name: node:10.15.1
+    entrypoint: npm
     args: ["run", "build"]
 
-  # # Build
-  # - name: "gcr.io/authentication-app-2daff/firebase"
-  #   args: ["deploy"]
-
+steps:
   # Deploy
-  - name: "gcr.io/cloud-builders/npm"
+  - name: node:10.15.1
+    entrypoint: npm
     args: ["run", "deploy"]
+
+
+# Instal firebase globaly
+# - name: "gcr.io/cloud-builders/npm"
+#   args: ["install", "-g", "firebase-tools"]
+# # Build
+# - name: "gcr.io/authentication-app-2daff/firebase"
+#   args: ["deploy"]
