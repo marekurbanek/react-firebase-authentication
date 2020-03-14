@@ -1,4 +1,15 @@
 steps:
+  # Decrypt
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+    - kms
+    - decrypt
+    -  --ciphertext-file=.env.enc
+    - --plaintext-file=.env
+    - --location=global
+    - --keyring=react-firebase-authentication 
+    - --key=cloudbuild-env
+steps:
   # Instal
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
@@ -11,6 +22,10 @@ steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
 
-  # Build
-  - name: "gcr.io/authentication-app-2daff/firebase"
-    args: ["deploy"]
+  # # Build
+  # - name: "gcr.io/authentication-app-2daff/firebase"
+  #   args: ["deploy"]
+
+  # Deploy
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "deploy"]
