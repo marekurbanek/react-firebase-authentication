@@ -2,33 +2,28 @@ steps:
   # Decrypt
   - name: "gcr.io/cloud-builders/gcloud"
     args:
-    - kms
-    - decrypt
-    -  --ciphertext-file=.env.enc
-    - --plaintext-file=.env
-    - --location=global
-    - --keyring=react-firebase-authentication 
-    - --key=cloudbuild-env
+      - kms
+      - decrypt
+      - --ciphertext-file=.env.enc
+      - --plaintext-file=.env
+      - --location=global
+      - --keyring=react-firebase-authentication
+      - --key=cloudbuild-env
 
-steps:
   # Instal
   - name: node:10.15.1
     entrypoint: npm
-    args: ['install']
+    args: ["install"]
 
-steps:
   # Build
   - name: node:10.15.1
     entrypoint: npm
     args: ["run", "build"]
 
-steps:
   # Deploy
   - name: node:10.15.1
     entrypoint: npm
     args: ["run", "deploy"]
-
-
 # Instal firebase globaly
 # - name: "gcr.io/cloud-builders/npm"
 #   args: ["install", "-g", "firebase-tools"]
